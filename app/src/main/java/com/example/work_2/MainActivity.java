@@ -10,19 +10,29 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    final int REQUEST_CODE_STUDENT_ZHANGSAN = 0;
+    final int REQUEST_CODE_STUDENT_LISI = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button bt=(Button)findViewById(R.id.Button1);
-        bt.setOnClickListener(new View.OnClickListener() {
+        Button bt1=(Button)findViewById(R.id.Button1);
+        bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText text=findViewById(R.id.text1);
                 Intent intent=new Intent(MainActivity.this,AnotherActivity.class);
-                intent.putExtra("text",text.getText().toString());
-                startActivityForResult(intent,0);
+                intent.putExtra("text","zhangsan");
+                startActivityForResult(intent,REQUEST_CODE_STUDENT_ZHANGSAN);
+            }
+        });
+        Button bt2=(Button)findViewById(R.id.Button2);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,TeacherActivity.class);
+                intent.putExtra("text","lisi");
+                startActivityForResult(intent,REQUEST_CODE_STUDENT_LISI);
             }
         });
     }
@@ -32,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==0 && resultCode==0){
             String str=data.getStringExtra("result");
             Toast.makeText(this,str, Toast.LENGTH_LONG).show();
+
         }
+        else if(requestCode==1 && resultCode==0){
+            String str=data.getStringExtra("result");
+            Toast.makeText(this,str, Toast.LENGTH_LONG).show();
     }
+}
 }

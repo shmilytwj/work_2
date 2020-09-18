@@ -11,25 +11,23 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-public class AnotherActivity extends AppCompatActivity {
+public class TeacherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_another);
+        setContentView(R.layout.activity_teacher);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button bt=(Button)findViewById(R.id.bt);
+        Button bt = (Button) findViewById(R.id.bt1);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=getIntent();
-                String str=intent.getStringExtra("text");
-                intent.putExtra("result","Student:"+str);
-                setResult(0,intent);
+                Intent intent = getIntent();
+                String str = intent.getStringExtra("text");
+                intent.putExtra("result", "Teacher:" + str);
+                setResult(0, intent);
                 finish();
             }
         });
@@ -41,5 +39,6 @@ public class AnotherActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
 }
